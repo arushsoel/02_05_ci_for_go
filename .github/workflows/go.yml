@@ -1,7 +1,12 @@
     name: Go
 
     env:
-      GIN_MODE: release
+        GIN_MODE: release
+        GOROOT: /home/runner/work/02_05_ci_for_go/setup-go-faster/go/1.19.13/x64
+        minGoVersion: 1.23
+        buildTags: 
+        checks: inherit
+        format: text
 
     on:
       push:
@@ -29,7 +34,12 @@
           uses: morphy2k/revive-action@v2.4.1
 
         - name: Staticcheck
-          uses: dominikh/staticcheck-action@v1.3.0
+          run: |
+            export STATICCHECK_CACHE="/home/runner/work/_temp/staticcheck"
+            go clean -modcache
+            go install honnef.co/go/tools/cmd/staticcheck@v0.4.3
+            echo "::add-matcher::$GITHUB_ACTION_PATH/matchers.json"
+            $(go env GOPATH)/bin/staticcheck -tags "${buildTags}" -checks "${checks}" -f "${format}" -go "${minGoVersion}" ./...
          
 
         - name: Build
