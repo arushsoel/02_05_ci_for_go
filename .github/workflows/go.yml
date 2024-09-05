@@ -1,20 +1,10 @@
 # 02_05 CI for Go
 
-The following workflow updates the workflow suggested by GitHub Actions with the following:
 
-- Adds an `env` block and a value for `GIN_MODE` set to `release`.
-- Adds a `permissions` block for the `build` job with a request for `write` permissions for `checks`.
-- Updates the `setup-go` action to use the input for `go-version-file: 'go.mod'`
-- Adds the action `morphy2k/revive-action` for linting.
-  - [Revive Action - GitHub Marketplace](https://github.com/marketplace/actions/revive-action)
-  - [Project website](https://github.com/mgechev/revive)
-- Adds the action `dominikh/staticcheck-action` for static analysis.
-  - [Staticcheck - GitHub Marketplace](https://github.com/marketplace/actions/staticcheck)
-  - [Project website](https://staticcheck.io/)
 
 
 ## The Updated Workflow
-The updated workflow can be found in the code snippet below and in the repo here: [./go-ci-workflow.yml](./go-ci-workflow.yml).
+
 
     name: Go
 
