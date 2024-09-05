@@ -1,11 +1,3 @@
-# 02_05 CI for Go
-
-
-
-
-## The Updated Workflow
-
-
     name: Go
 
     env:
@@ -55,6 +47,3 @@
             report_paths: '**/junit.xml'
             detailed_summary: true
             include_passed: true
-
-
- For more information see the GitHub documentation for [Building and testing Go](https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go)
