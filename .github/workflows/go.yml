@@ -30,6 +30,8 @@
 
         - name: Staticcheck
           uses: dominikh/staticcheck-action@v1.3.0
+          with:
+             cache: false
 
         - name: Build
           run: |
